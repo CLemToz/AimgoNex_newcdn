@@ -2,7 +2,7 @@
  * @Author: DASTAN_E_ALAM
  * @Date:   2025-04-14 10:05:29
  * @Last Modified by:   DASTAN_E_ALAM
- * @Last Modified time: 2025-05-03 00:36:20
+ * @Last Modified time: 2025-05-06 22:24:48
  */
 * {
     margin: 0;
@@ -343,7 +343,8 @@ section .text p {
 
 /* Start Sponsers Bar */
 .sponsers-bar {
-    background-color: #04684C;
+    /* background-color:#04684C; */
+    border-bottom: #000 solid 1px;
     padding: 20px;
 }
 
