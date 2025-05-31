@@ -29,7 +29,7 @@ AmigoNex is your tech-driven virtual assistant, designed to rescue real estate a
     ```
 2. Navigate to the project directory:
     ```bash
-    cd amigonex
+    cd amigonex  
     ```
 3. Install dependencies:
     ```bash
