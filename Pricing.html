@@ -2,7 +2,11 @@
   @Author: Dastan Alam
   @Date:   2025-06-01 12:50:33 PM   12:06
   @Last Modified by:   Dastan Alam
-  @Last Modified time: 2025-06-03 11:32:03 PM   23:06
+<<<<<<< Updated upstream
+  @Last Modified time: 2025-06-03 11:55:00 PM   23:06
+=======
+  @Last Modified time: 2025-06-04 12:38:23 AM   00:06
+>>>>>>> Stashed changes
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -21,9 +25,9 @@
     <style>
         /* Base Styles */
         :root {
-            --primary-color: #3a86ff;
-            --secondary-color: #8338ec;
-            --accent-color: #ff006e;
+            --primary-color: #40af3e;
+            --secondary-color: #2e8b2a;
+            --accent-color: #ff6b35;
             --dark-color: #1a1a2e;
             --light-color: #f8f9fa;
             --text-color: #333;
@@ -78,12 +82,13 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(58, 134, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(64, 175, 62, 0.3);
         }
         
         button:hover, .hero-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(58, 134, 255, 0.4);
+            box-shadow: 0 6px 20px rgba(64, 175, 62, 0.4);
+            background: var(--secondary-color);
         }
         
         /* Header Styles */
@@ -192,7 +197,7 @@
         .toggle-label {
             margin: 0 15px;
             font-weight: 600;
-            color: white;
+            color: var(--text-color);
         }
         
         .toggle-switch {
@@ -272,6 +277,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
+            align-items: stretch; /* Make all cards equal height */
         }
         
         .pricing-card {
@@ -282,6 +288,9 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%; /* Make cards take full height */
         }
         
         .pricing-card:hover {
@@ -330,6 +339,7 @@
         
         .plan-features {
             margin-bottom: 30px;
+            flex-grow: 1; /* Allow features to grow and push button down */
         }
         
         .plan-features li {
@@ -351,6 +361,7 @@
         .plan-button {
             width: 100%;
             text-align: center;
+            margin-top: auto; /* Push button to bottom */
         }
         
         /* Features Comparison Section */
@@ -363,19 +374,33 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
         }
         
         .features-table th, 
         .features-table td {
-            padding: 15px;
+            padding: 15px 20px;
             text-align: left;
             border-bottom: 1px solid #eee;
         }
         
         .features-table th {
             font-weight: 600;
-            color: var(--dark-color);
-            background-color: #f9f9ff;
+            color: white;
+            background-color: var(--primary-color);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .features-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .features-table tr:hover {
+            background-color: #f1f1f1;
         }
         
         .features-table tr:last-child td {
@@ -385,14 +410,26 @@
         .feature-name {
             font-weight: 600;
             width: 30%;
+            color: var(--dark-color);
         }
         
         .feature-value {
             text-align: center;
+            font-weight: 500;
         }
         
-        .feature-value i {
+        .feature-value i.fa-check {
             color: var(--primary-color);
+            background: rgba(64, 175, 62, 0.1);
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .feature-value i.fa-times {
+            color: #ff6b6b;
+            background: rgba(255, 107, 107, 0.1);
+            padding: 5px;
+            border-radius: 50%;
         }
         
         /* FAQ Section */
@@ -430,6 +467,7 @@
         
         .faq-question i {
             transition: transform 0.3s;
+            color: var(--primary-color);
         }
         
         .faq-answer {
@@ -607,6 +645,11 @@
             .features-table {
                 display: block;
                 overflow-x: auto;
+            }
+            
+            .pricing-toggle {
+                flex-direction: column;
+                gap: 15px;
             }
         }
     </style>
