@@ -2,7 +2,7 @@
   @Author: Dastan Alam
   @Date:   2025-06-01 12:40:21 PM   12:06
   @Last Modified by:   Dastan Alam
-  @Last Modified time: 2025-06-01 01:32:44 PM   13:06
+  @Last Modified time: 2025-06-03 11:15:35 PM   23:06
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -14,12 +14,533 @@
     <!-- Fonts -->
     <link href="https://db.onlinewebfonts.com/c/f1fcc5aed1e20fc0cdb9f8a7573625bd?family=Integral+CF+Regular" rel="stylesheet">
     <link href="https://db.onlinewebfonts.com/c/365834cfa7beb7ca64c00476397ddc32?family=Helvetica+Neue+Medium+Extended" rel="stylesheet">
-    <!-- Styles -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <!-- Styles -->
     <link rel="stylesheet" href="aboutstyle.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #3a86ff;
+            --secondary-color: #8338ec;
+            --accent-color: #ff006e;
+            --dark-color: #1a1a2e;
+            --light-color: #f8f9fa;
+            --text-color: #333;
+            --text-light: #6c757d;
+            --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Integral CF', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        
+        h1 { font-size: 2.8rem; }
+        h2 { font-size: 2.2rem; }
+        h3 { font-size: 1.8rem; }
+        
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: var(--text-light);
+        }
+        
+        /* Button Styles */
+        button, .hero-button {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(58, 134, 255, 0.3);
+        }
+        
+        button:hover, .hero-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(58, 134, 255, 0.4);
+        }
+        
+        /* Header Styles */
+        .header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+        
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        .header nav ul li {
+            margin: 0 15px;
+        }
+        
+        .header nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .header nav ul li a:hover, 
+        .header nav ul li a.active {
+            color: var(--primary-color);
+        }
+        
+        .header nav ul li a.active:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gradient);
+        }
+        
+        /* Hero Section */
+        .about-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('public/about-hero-bg.jpg') no-repeat center center/cover;
+            color: white;
+            padding: 180px 0 100px;
+            text-align: center;
+        }
+        
+        .about-hero .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .section-tag img {
+            margin-right: 10px;
+            width: 16px;
+        }
+        
+        .about-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, #ddd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .about-hero p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Mission Section */
+        .mission-section {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .mission-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .mission-text {
+            flex: 1;
+        }
+        
+        .mission-image {
+            flex: 1;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .mission-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .mission-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .secondary-section-title {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+        
+        .secondary-section-title img {
+            margin-right: 10px;
+            width: 16px;
+        }
+        
+        .mission-stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat h3 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .stat p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        /* Values Section */
+        .values-section {
+            padding: 100px 0;
+            background-color: #f9f9ff;
+        }
+        
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .value-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+        
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .value-card i {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .value-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Team Section */
+        .team-section {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .team-member {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            padding-bottom: 30px;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .team-member img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+        
+        .team-member h3 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+        
+        .team-member p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: var(--primary-color);
+            background: rgba(58, 134, 255, 0.1);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        /* CTA Section */
+        .about-cta {
+            padding: 100px 0;
+            background: var(--gradient);
+            color: white;
+            text-align: center;
+        }
+        
+        .about-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .about-cta p {
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-size: 1.2rem;
+        }
+        
+        .hero-button {
+            background: white;
+            color: var(--primary-color);
+        }
+        
+        .hero-button:hover {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--primary-color);
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer img {
+            margin-bottom: 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-contact .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .footer-contact i {
+            margin-right: 15px;
+            color: var(--primary-color);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icons a {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .mission-content {
+                flex-direction: column;
+            }
+            
+            .mission-text, .mission-image {
+                width: 100%;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header .container {
+                flex-direction: column;
+            }
+            
+            .header nav {
+                margin: 20px 0;
+            }
+            
+            .header button {
+                margin-bottom: 20px;
+            }
+            
+            .mission-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .about-hero {
+                padding: 150px 0 80px;
+            }
+            
+            .about-hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .header nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .header nav ul li {
+                margin: 10px 0;
+            }
+            
+            .about-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .about-cta h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Header (Same as Homepage) -->
+    <!-- Header -->
     <header class="header">
         <div class="container">
             <img src="public/copt.png" alt="AmigoNex-logo" width="180">
@@ -45,7 +566,7 @@
                     OUR STORY
                 </span>
                 <h1>Revolutionizing Real Estate Support</h1>
-                <p>AmigoNex was born from the frustration of seeing talented agents overwhelmed by administrative tasks instead of doing what they do best - serving clients.</p>
+                <p>AmigoNex was born from the frustration of seeing talented agents overwhelmed by administrative tasks instead of doing what they do best - serving clients. Our mission is to empower real estate professionals with the tools and support they need to thrive.</p>
             </div>
         </div>
     </section>
@@ -60,7 +581,7 @@
                         OUR MISSION
                     </span>
                     <h2>Empowering Agents Through Intelligent Support</h2>
-                    <p>We combine cutting-edge technology with human expertise to provide real estate professionals with comprehensive back-office solutions that scale with their business.</p>
+                    <p>We combine cutting-edge technology with human expertise to provide real estate professionals with comprehensive back-office solutions that scale with their business. Our platform is designed to handle the complexities of real estate transactions while maintaining the personal touch that clients expect.</p>
                     <div class="mission-stats">
                         <div class="stat">
                             <h3>500+</h3>
@@ -92,27 +613,28 @@
                     OUR VALUES
                 </span>
                 <h2>The Principles That Drive Us</h2>
+                <p>These core values guide every decision we make and every interaction we have with our clients.</p>
             </div>
             <div class="values-grid">
                 <div class="value-card">
                     <i class="fas fa-bolt"></i>
                     <h3>Efficiency</h3>
-                    <p>We streamline operations to save you time and reduce stress in your daily workflow.</p>
+                    <p>We streamline operations to save you time and reduce stress in your daily workflow, allowing you to focus on what matters most.</p>
                 </div>
                 <div class="value-card">
                     <i class="fas fa-shield-alt"></i>
                     <h3>Reliability</h3>
-                    <p>Consistent, dependable support you can count on for every transaction.</p>
+                    <p>Consistent, dependable support you can count on for every transaction, with accuracy and attention to detail.</p>
                 </div>
                 <div class="value-card">
                     <i class="fas fa-lightbulb"></i>
                     <h3>Innovation</h3>
-                    <p>Continuously improving our tech solutions to stay ahead of industry changes.</p>
+                    <p>Continuously improving our tech solutions to stay ahead of industry changes and provide you with competitive advantages.</p>
                 </div>
                 <div class="value-card">
                     <i class="fas fa-heart"></i>
                     <h3>Partnership</h3>
-                    <p>We succeed when you succeed - your growth is our priority.</p>
+                    <p>We succeed when you succeed - your growth is our priority. We're invested in your long-term success.</p>
                 </div>
             </div>
         </div>
@@ -175,13 +697,13 @@
         <div class="container">
             <div class="cta-content">
                 <h2>Ready to Transform Your Real Estate Business?</h2>
-                <p>Join hundreds of agents who've reclaimed their time and grown their business with AmigoNex.</p>
+                <p>Join hundreds of agents who've reclaimed their time and grown their business with AmigoNex. Schedule a demo today to see how we can help you achieve more.</p>
                 <button class="hero-button">Get Started Today</button>
             </div>
         </div>
     </section>
 
-    <!-- Footer (Same as Homepage) -->
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <img src="./public/copt.png" alt="AmigoNex logo" width="180">
@@ -210,7 +732,7 @@
                     <a href="#"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
-            <p class="copyright">&copy; 2025 AmigoNex - Your Real Estate Ally</p>
+            <p class="copyright">&copy; 2025 AmigoNex - Your Real Estate Ally. All rights reserved.</p>
         </div>
     </footer>
 
