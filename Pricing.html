@@ -2,13 +2,935 @@
   @Author: Dastan Alam
   @Date:   2025-06-01 12:50:33 PM   12:06
   @Last Modified by:   Dastan Alam
-  @Last Modified time: 2025-06-01 12:50:35 PM   12:06
+  @Last Modified time: 2025-06-03 11:32:03 PM   23:06
 -->
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-    </head>
-    <body>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - AmigoNex Real Estate Support Services</title>
+    <meta name="description" content="Flexible pricing plans for AmigoNex real estate virtual assistant services. Choose the perfect package for your business needs.">
+    <!-- Fonts -->
+    <link href="https://db.onlinewebfonts.com/c/f1fcc5aed1e20fc0cdb9f8a7573625bd?family=Integral+CF+Regular" rel="stylesheet">
+    <link href="https://db.onlinewebfonts.com/c/365834cfa7beb7ca64c00476397ddc32?family=Helvetica+Neue+Medium+Extended" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <!-- Styles -->
+    <link rel="stylesheet" href="pricingstyle.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #3a86ff;
+            --secondary-color: #8338ec;
+            --accent-color: #ff006e;
+            --dark-color: #1a1a2e;
+            --light-color: #f8f9fa;
+            --text-color: #333;
+            --text-light: #6c757d;
+            --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Integral CF', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        
+        h1 { font-size: 2.8rem; }
+        h2 { font-size: 2.2rem; }
+        h3 { font-size: 1.8rem; }
+        
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: var(--text-light);
+        }
+        
+        /* Button Styles */
+        button, .hero-button {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(58, 134, 255, 0.3);
+        }
+        
+        button:hover, .hero-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(58, 134, 255, 0.4);
+        }
+        
+        /* Header Styles */
+        .header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+        
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        .header nav ul li {
+            margin: 0 15px;
+        }
+        
+        .header nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .header nav ul li a:hover, 
+        .header nav ul li a.active {
+            color: var(--primary-color);
+        }
+        
+        .header nav ul li a.active:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gradient);
+        }
+        
+        /* Pricing Hero Section */
+        .pricing-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('public/pricing-hero-bg.jpg') no-repeat center center/cover;
+            color: white;
+            padding: 180px 0 100px;
+            text-align: center;
+        }
+        
+        .pricing-hero .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .section-tag img {
+            margin-right: 10px;
+            width: 16px;
+        }
+        
+        .pricing-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, #ddd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .pricing-hero p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Pricing Toggle */
+        .pricing-toggle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 40px 0;
+        }
+        
+        .toggle-label {
+            margin: 0 15px;
+            font-weight: 600;
+            color: white;
+        }
+        
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background: var(--gradient);
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        
+        /* Pricing Plans Section */
+        .pricing-plans {
+            padding: 100px 0;
+            background-color: #f9f9ff;
+        }
+        
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+        
+        .secondary-section-title {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+        
+        .secondary-section-title img {
+            margin-right: 10px;
+            width: 16px;
+        }
+        
+        .plans-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .pricing-card.popular {
+            border: 2px solid var(--primary-color);
+        }
+        
+        .popular-tag {
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background: var(--gradient);
+            color: white;
+            padding: 5px 30px;
+            transform: rotate(45deg);
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .plan-name {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+        
+        .plan-price {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .plan-price span {
+            font-size: 1rem;
+            color: var(--text-light);
+        }
+        
+        .plan-description {
+            margin-bottom: 25px;
+            color: var(--text-light);
+        }
+        
+        .plan-features {
+            margin-bottom: 30px;
+        }
+        
+        .plan-features li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+            list-style: none;
+        }
+        
+        .plan-features li:before {
+            content: "\f00c";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+        }
+        
+        .plan-button {
+            width: 100%;
+            text-align: center;
+        }
+        
+        /* Features Comparison Section */
+        .features-section {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .features-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 40px;
+        }
+        
+        .features-table th, 
+        .features-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .features-table th {
+            font-weight: 600;
+            color: var(--dark-color);
+            background-color: #f9f9ff;
+        }
+        
+        .features-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .feature-name {
+            font-weight: 600;
+            width: 30%;
+        }
+        
+        .feature-value {
+            text-align: center;
+        }
+        
+        .feature-value i {
+            color: var(--primary-color);
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            padding: 100px 0;
+            background-color: #f9f9ff;
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            background: white;
+        }
+        
+        .faq-question {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        .faq-question:hover {
+            background: #f5f5ff;
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s;
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s, padding 0.3s;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px;
+            max-height: 500px;
+        }
+        
+        /* CTA Section */
+        .pricing-cta {
+            padding: 100px 0;
+            background: var(--gradient);
+            color: white;
+            text-align: center;
+        }
+        
+        .pricing-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .pricing-cta p {
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-size: 1.2rem;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer img {
+            margin-bottom: 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-contact .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .footer-contact i {
+            margin-right: 15px;
+            color: var(--primary-color);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icons a {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header .container {
+                flex-direction: column;
+            }
+            
+            .header nav {
+                margin: 20px 0;
+            }
+            
+            .header button {
+                margin-bottom: 20px;
+            }
+            
+            .pricing-hero {
+                padding: 150px 0 80px;
+            }
+            
+            .pricing-hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .features-table .feature-name {
+                width: 40%;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .header nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .header nav ul li {
+                margin: 10px 0;
+            }
+            
+            .pricing-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .pricing-cta h2 {
+                font-size: 2rem;
+            }
+            
+            .plans-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .features-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <img src="public/copt.png" alt="AmigoNex-logo" width="180">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Service</a></li>
+                    <li><a href="pricing.html" class="active">Pricing</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+            <button>Get Started</button>
+        </div>
+    </header>
+
+    <!-- Pricing Hero Section -->
+    <section class="pricing-hero">
+        <div class="container">
+            <div class="hero-content">
+                <span class="section-tag">
+                    <img src="images/heat.svg" class="icon-svg">
+                    SIMPLE PRICING
+                </span>
+                <h1>Plans That Grow With Your Business</h1>
+                <p>Choose the perfect package for your real estate business needs. No hidden fees, no surprises - just straightforward pricing for exceptional support.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Plans Section -->
+    <section class="pricing-plans">
+        <div class="container">
+            <div class="section-header">
+                <span class="secondary-section-title">
+                    <img src="images/heat.svg" class="icon-svg">
+                    OUR PLANS
+                </span>
+                <h2>Flexible Pricing Options</h2>
+                <p>Select the plan that matches your current needs, with the flexibility to upgrade as your business grows.</p>
+            </div>
+
+            <div class="pricing-toggle">
+                <span class="toggle-label">Monthly</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="billing-toggle">
+                    <span class="slider"></span>
+                </label>
+                <span class="toggle-label">Annual (Save 20%)</span>
+            </div>
+
+            <div class="plans-container">
+                <!-- Basic Plan -->
+                <div class="pricing-card">
+                    <h3 class="plan-name">Starter</h3>
+                    <div class="plan-price">$199<span>/month</span></div>
+                    <p class="plan-description">Perfect for new agents or those with limited transaction volume.</p>
+                    <ul class="plan-features">
+                        <li>Up to 5 transactions/month</li>
+                        <li>Basic transaction coordination</li>
+                        <li>Email and chat support</li>
+                        <li>Standard business hours</li>
+                        <li>Basic marketing support</li>
+                    </ul>
+                    <button class="plan-button">Get Started</button>
+                </div>
+
+                <!-- Popular Plan -->
+                <div class="pricing-card popular">
+                    <div class="popular-tag">Most Popular</div>
+                    <h3 class="plan-name">Professional</h3>
+                    <div class="plan-price">$399<span>/month</span></div>
+                    <p class="plan-description">Ideal for established agents with consistent business.</p>
+                    <ul class="plan-features">
+                        <li>Up to 15 transactions/month</li>
+                        <li>Full transaction management</li>
+                        <li>Priority phone support</li>
+                        <li>Extended support hours</li>
+                        <li>Advanced marketing assistance</li>
+                        <li>CRM integration</li>
+                    </ul>
+                    <button class="plan-button">Get Started</button>
+                </div>
+
+                <!-- Premium Plan -->
+                <div class="pricing-card">
+                    <h3 class="plan-name">Enterprise</h3>
+                    <div class="plan-price">$699<span>/month</span></div>
+                    <p class="plan-description">For top producers and teams with high volume.</p>
+                    <ul class="plan-features">
+                        <li>Unlimited transactions</li>
+                        <li>Dedicated support specialist</li>
+                        <li>24/7 priority support</li>
+                        <li>Full marketing suite</li>
+                        <li>CRM customization</li>
+                        <li>Team management tools</li>
+                        <li>Analytics dashboard</li>
+                    </ul>
+                    <button class="plan-button">Get Started</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Comparison Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="secondary-section-title">
+                    <img src="images/heat.svg" class="icon-svg">
+                    COMPARISON
+                </span>
+                <h2>Plan Feature Breakdown</h2>
+                <p>See how our different plans compare to help you make the right choice.</p>
+            </div>
+
+            <table class="features-table">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Starter</th>
+                        <th>Professional</th>
+                        <th>Enterprise</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="feature-name">Transactions Included</td>
+                        <td class="feature-value">5</td>
+                        <td class="feature-value">15</td>
+                        <td class="feature-value">Unlimited</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">Dedicated Support Specialist</td>
+                        <td class="feature-value"><i class="fas fa-times"></i></td>
+                        <td class="feature-value"><i class="fas fa-check"></i></td>
+                        <td class="feature-value"><i class="fas fa-check"></i></td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">Support Availability</td>
+                        <td class="feature-value">Business Hours</td>
+                        <td class="feature-value">Extended Hours</td>
+                        <td class="feature-value">24/7</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">CRM Integration</td>
+                        <td class="feature-value"><i class="fas fa-times"></i></td>
+                        <td class="feature-value"><i class="fas fa-check"></i></td>
+                        <td class="feature-value"><i class="fas fa-check"></i></td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">Marketing Support</td>
+                        <td class="feature-value">Basic</td>
+                        <td class="feature-value">Advanced</td>
+                        <td class="feature-value">Full Suite</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">Transaction Coordination</td>
+                        <td class="feature-value">Basic</td>
+                        <td class="feature-value">Full</td>
+                        <td class="feature-value">Full + Priority</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">Analytics Dashboard</td>
+                        <td class="feature-value"><i class="fas fa-times"></i></td>
+                        <td class="feature-value">Basic</td>
+                        <td class="feature-value">Advanced</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="secondary-section-title">
+                    <img src="images/heat.svg" class="icon-svg">
+                    FAQs
+                </span>
+                <h2>Frequently Asked Questions</h2>
+                <p>Find answers to common questions about our pricing and services.</p>
+            </div>
+
+            <div class="faq-container">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What payment methods do you accept?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We accept all major credit cards (Visa, Mastercard, American Express, Discover) as well as ACH bank transfers. All payments are processed securely through our payment processor.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I change plans later?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! You can upgrade or downgrade your plan at any time. Changes will take effect at the start of your next billing cycle. If you upgrade mid-cycle, we'll prorate the difference.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is there a contract or long-term commitment?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No long-term contracts required. All plans are month-to-month, and you can cancel anytime with 30 days notice. Our annual plan offers a discount but is still cancelable with prorated refund.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What happens if I exceed my transaction limit?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>If you exceed your monthly transaction limit, we'll automatically charge a small overage fee per additional transaction ($25 for Starter, $20 for Professional). Enterprise plans have no limits.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you offer discounts for teams?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! We offer special team pricing for brokerages and teams with multiple agents. Contact our sales team for custom pricing based on your team size and needs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="pricing-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Still Have Questions?</h2>
+                <p>Our team is ready to help you choose the perfect plan for your business needs.</p>
+                <button class="hero-button">Contact Our Sales Team</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <img src="./public/copt.png" alt="AmigoNex logo" width="180">
+            <div class="footer-content">
+                <div class="footer-contact">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>contact@amigonex.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <p>(555) 123-4567</p>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <p class="copyright">&copy; 2025 AmigoNex - Your Real Estate Ally. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle FAQ items
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+
+        // Toggle billing period
+        const toggle = document.getElementById('billing-toggle');
+        const monthlyPrices = [199, 399, 699];
+        const annualPrices = [159, 319, 559]; // 20% off
+        
+        toggle.addEventListener('change', function() {
+            const priceElements = document.querySelectorAll('.plan-price');
+            const periodElements = document.querySelectorAll('.plan-price span');
+            
+            priceElements.forEach((el, index) => {
+                if(this.checked) {
+                    // Switch to annual pricing
+                    el.firstChild.textContent = `$${annualPrices[index]}`;
+                    periodElements[index].textContent = '/year';
+                } else {
+                    // Switch to monthly pricing
+                    el.firstChild.textContent = `$${monthlyPrices[index]}`;
+                    periodElements[index].textContent = '/month';
+                }
+            });
+        });
+    </script>
+</body>
 </html>
