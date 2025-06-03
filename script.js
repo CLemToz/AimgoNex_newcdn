@@ -30,3 +30,4 @@ quotes.forEach(quote => {
         quote.classList.add('active');
     });
 });
+
