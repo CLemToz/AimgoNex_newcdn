@@ -487,18 +487,6 @@ section .text p {
   border-radius: 20px;
 }
 
-.features::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: var(--filled-top-position, 0); /* Fallback to 0 if not set */
-  width: 11px;
-  height: calc(100% / 4); /* Now divided by 4 instead of 3 */
-  background-color: #04684c;
-  border-radius: 20px;
-  transition: top 0.3s ease;
-}
-
 .about-us .features .feat {
   background-color: #fff;
   border: 1px solid #e5e5e5;
@@ -581,10 +569,6 @@ section .text p {
     padding-left: 20px;
   }
 
-  .features::before,
-  .features::after {
-    width: 7px;
-  }
 }
 
 /* Start Featured */

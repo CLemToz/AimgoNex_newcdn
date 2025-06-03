@@ -24,6 +24,137 @@
     <link rel="stylesheet" href="style.css">
     <!--Font Awesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        .about-us {
+            display: flex;
+            align-items: flex-start;
+            gap: 60px;
+            padding: 100px 20px;
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-us .stats {
+            position: sticky;
+            top: 100px;
+            flex: 1;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .about-us .stats-img {
+            width: 100%;
+            max-width: 400px;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            z-index: 1;
+            transform-origin: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+        }
+
+        .about-us .text {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .about-us .features {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+            margin-top: 40px;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        /* Animated vertical line */
+        .about-us .features::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 8px;
+            background: linear-gradient(to bottom, #057a59, #04684c);
+            border-radius: 12px;
+        }
+
+        .about-us .feat {
+            padding: 30px;
+            border-radius: 12px;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            opacity: 0.6;
+            transform: translateX(-20px);
+        }
+
+        .about-us .feat h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        .about-us .feat p {
+            color: #666;
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        .about-us .feat.active {
+            opacity: 1;
+            transform: translateX(0);
+            background-color: #f2ffd3;
+            box-shadow: 0 10px 30px rgba(76, 175, 80, 0.1);
+        }
+
+        .about-us .feat.active h3 {
+            color: #4CAF50;
+        }
+
+        .about-us .feat.active p {
+            color: #444;
+        }
+
+        .about-us .feat.active::before {
+            content: '';
+            position: absolute;
+            left: -37px;
+            top: 40px;
+            width: 20px;
+            height: 20px;
+            background-color: #4CAF50;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.3);
+            z-index: 2;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(76, 175, 80, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+            }
+        }
+
+        /* Image animation when active */
+        .about-us .stats-img.active {
+            transform: scale(1.05) translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+        }
+    </style>
 </head>
 
 <body>
@@ -92,42 +223,41 @@
     <!--End Sponsers Bar-->
     <!--End Sponsers Bar-->
     <!--Start About Us-->
-    <div class="about-us">
-        <div class="container">
-            <div class="stats">
-                <img src="./images/Illustrations/Complete real estate.png" class="stats-img" alt="AmigoNex stats">
-            </div>
-            <div class="text">
-                <span class="main-section-title">
-                    <img src="images/heat.svg" class="icon-svg">
-                    About us
-                </span>
-                <h2>Your complete real estate support system</h2>
-                <div class="features">
-                    <div class="feat  active-feat">
-                        <h3>Pre-listing coordinaton</h3>
-                        <p>We take sad, dusty listings and turn them into scroll-stoppers with professional photos,
-                            videos and descriptions.</p>
-                    </div>
-                    <div class="feat">
-                        <h3>Listing Optimization</h3>
-                        <p>We enhance your listings with SEO-friendly descriptions, strategic keywords, and
-                            platform-specific formatting to maximize visibility.</p>
-                    </div>
-                    <div class="feat">
-                        <h3>Transaction Coordination</h3>
-                        <p>We track, chase, organize and follow up - so you can actually sell homes instead of swimming
-                            in PDFs.</p>
-                    </div>
-                    <div class="feat">
-                        <h3>Social Media Management</h3>
-                        <p>Forget ghosting your followers - we'll keep your feed alive with "Just Listed" graphics,
-                            reels, and promos.</p>
-                    </div>
+    <div class="about-us" id="scroll-section">
+        <div class="stats">
+            <img src="images/Illustrations/Prelisting.png" class="stats-img" id="feature-image" alt="Feature Image">
+        </div>
+        <div class="text">
+            <span class="main-section-title">
+                <img src="images/heat.svg" class="icon-svg">
+                About us
+            </span>
+            <h2>Your complete real estate support system</h2>
+            <div class="features">
+                <div class="feat" data-img="images/Illustrations/Prelisting.png">
+                    <h3>Pre-listing coordination</h3>
+                    <p>We take sad, dusty listings and turn them into scroll-stoppers with professional photos, videos
+                        and descriptions.</p>
+                </div>
+                <div class="feat" data-img="images/Illustrations/Optimization.png">
+                    <h3>Listing Optimization</h3>
+                    <p>We enhance your listings with SEO-friendly descriptions, strategic keywords, and
+                        platform-specific formatting to maximize visibility.</p>
+                </div>
+                <div class="feat" data-img="images/Illustrations/Transaction.png">
+                    <h3>Transaction Coordination</h3>
+                    <p>We track, chase, organize and follow up - so you can actually sell homes instead of swimming in
+                        PDFs.</p>
+                </div>
+                <div class="feat" data-img="images/Illustrations/SocialMedia.png">
+                    <h3>Social Media Management</h3>
+                    <p>Forget ghosting your followers - we'll keep your feed alive with "Just Listed" graphics, reels,
+                        and promos.</p>
                 </div>
             </div>
         </div>
     </div>
+
     <!--End About Us-->
     <!--Start Featured-->
     <div class="featured">
@@ -310,6 +440,48 @@
             <p class="copyright">&copy; 2025 AmigoNex - Your Real Estate Ally</p>
         </div>
     </div>
+    <script>
+        const featureImage = document.getElementById('feature-image');
+        const features = document.querySelectorAll('.feat');
+        const progress = document.getElementById('timeline-progress');
+        const container = document.getElementById('features-container');
+
+        // Sticky Image + Highlighting on Scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    features.forEach(f => f.classList.remove('active'));
+                    entry.target.classList.add('active');
+                    const newImg = entry.target.getAttribute('data-img');
+                    featureImage.src = newImg;
+                }
+            });
+        }, {
+            threshold: 0.6,
+            rootMargin: "0px 0px -20% 0px"
+        });
+
+        features.forEach((feat) => observer.observe(feat));
+
+        // Animate progress bar with scroll
+        function animateProgress() {
+            const containerRect = container.getBoundingClientRect();
+            const viewportHeight = window.innerHeight;
+            const start = containerRect.top;
+            const end = containerRect.bottom;
+            const total = end - start;
+            const progressVisible = viewportHeight - Math.max(0, start);
+            const percent = Math.min(Math.max(progressVisible / total, 0), 1);
+            const barHeight = percent * container.offsetHeight;
+            progress.style.height = `${barHeight}px`;
+
+            requestAnimationFrame(animateProgress);
+        }
+
+        requestAnimationFrame(animateProgress);
+    </script>
+
+    </script>
     <script src="script.js"></script>
 </body>
 
