@@ -2,13 +2,878 @@
   @Author: Dastan Alam
   @Date:   2025-06-01 12:50:57 PM   12:06
   @Last Modified by:   Dastan Alam
-  @Last Modified time: 2025-06-01 12:50:58 PM   12:06
+  @Last Modified time: 2025-06-04 12:57:58 AM   00:06
 -->
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-    </head>
-    <body>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - AmigoNex Real Estate Support Services</title>
+    <meta name="description" content="Comprehensive real estate support services to streamline your business. Transaction coordination, marketing, admin support and more.">
+    <!-- Fonts -->
+    <link href="https://db.onlinewebfonts.com/c/f1fcc5aed1e20fc0cdb9f8a7573625bd?family=Integral+CF+Regular" rel="stylesheet">
+    <link href="https://db.onlinewebfonts.com/c/365834cfa7beb7ca64c00476397ddc32?family=Helvetica+Neue+Medium+Extended" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #40af3e;
+            --secondary-color: #2e8b2c;
+            --accent-color: #ff6b35;
+            --dark-color: #1a1a2e;
+            --light-color: #f8f9fa;
+            --text-color: #333;
+            --text-light: #6c757d;
+            --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Integral CF', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        
+        h1 { font-size: 2.8rem; }
+        h2 { font-size: 2.2rem; }
+        h3 { font-size: 1.8rem; }
+        
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: var(--text-light);
+        }
+        
+        /* Button Styles */
+        button, .hero-button {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(64, 175, 62, 0.3);
+        }
+        
+        button:hover, .hero-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(64, 175, 62, 0.4);
+            background: var(--secondary-color);
+        }
+        
+        /* Header Styles */
+        .header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+        
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        .header nav ul li {
+            margin: 0 15px;
+        }
+        
+        .header nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .header nav ul li a:hover, 
+        .header nav ul li a.active {
+            color: var(--primary-color);
+        }
+        
+        .header nav ul li a.active:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gradient);
+        }
+        
+        /* Services Hero Section */
+        .services-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('public/services-hero-bg.jpg') no-repeat center center/cover;
+            color: white;
+            padding: 180px 0 100px;
+            text-align: center;
+        }
+        
+        .services-hero .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .section-tag img {
+            margin-right: 10px;
+            width: 16px;
+        }
+        
+        .services-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, #ddd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .services-hero p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Services Section */
+        .services-section {
+            padding: 100px 0;
+            background-color: #f9f9ff;
+        }
+        
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+        
+        .secondary-section-title {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+        
+        .secondary-section-title img {
+            margin-right: 10px;
+            width: 16px;
+        }
+        
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            color: white;
+            font-size: 1.8rem;
+        }
+        
+        .service-name {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+        
+        .service-description {
+            margin-bottom: 25px;
+            color: var(--text-light);
+            flex-grow: 1;
+        }
+        
+        .service-features {
+            margin-bottom: 30px;
+        }
+        
+        .service-features li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+            list-style: none;
+        }
+        
+        .service-features li:before {
+            content: "\f00c";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+        }
+        
+        .service-button {
+            width: 100%;
+            text-align: center;
+            margin-top: auto;
+        }
+        
+        /* How It Works Section */
+        .process-section {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .process-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 50px;
+            position: relative;
+        }
+        
+        .process-steps:before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            z-index: 1;
+        }
+        
+        .process-step {
+            width: calc(25% - 30px);
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            border: 3px solid var(--primary-color);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .step-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+        
+        .step-description {
+            color: var(--text-light);
+        }
+        
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 100px 0;
+            background-color: #f9f9ff;
+        }
+        
+        .testimonials-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+        
+        .testimonial-content {
+            margin-bottom: 20px;
+            font-style: italic;
+            color: var(--text-color);
+            position: relative;
+        }
+        
+        .testimonial-content:before {
+            content: '\201C';
+            font-size: 4rem;
+            color: rgba(64, 175, 62, 0.1);
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            font-family: Georgia, serif;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+        
+        /* CTA Section */
+        .services-cta {
+            padding: 100px 0;
+            background: var(--gradient);
+            color: white;
+            text-align: center;
+        }
+        
+        .services-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .services-cta p {
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-size: 1.2rem;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer img {
+            margin-bottom: 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-contact .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .footer-contact i {
+            margin-right: 15px;
+            color: var(--primary-color);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icons a {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .process-step {
+                width: calc(50% - 30px);
+                margin-bottom: 40px;
+            }
+            
+            .process-steps:before {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header .container {
+                flex-direction: column;
+            }
+            
+            .header nav {
+                margin: 20px 0;
+            }
+            
+            .header button {
+                margin-bottom: 20px;
+            }
+            
+            .services-hero {
+                padding: 150px 0 80px;
+            }
+            
+            .services-hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .services-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .header nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .header nav ul li {
+                margin: 10px 0;
+            }
+            
+            .services-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .services-cta h2 {
+                font-size: 2rem;
+            }
+            
+            .process-step {
+                width: 100%;
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <img src="public/copt.png" alt="AmigoNex-logo" width="180">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html" class="active">Services</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+            <button>Get Started</button>
+        </div>
+    </header>
+
+    <!-- Services Hero Section -->
+    <section class="services-hero">
+        <div class="container">
+            <div class="hero-content">
+                <span class="section-tag">
+                    <img src="images/heat.svg" class="icon-svg">
+                    OUR SERVICES
+                </span>
+                <h1>Comprehensive Real Estate Support</h1>
+                <p>Streamline your business with our full suite of real estate support services designed to help you focus on what you do best - closing deals.</p>
+                <button class="hero-button">Get Started Today</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="secondary-section-title">
+                    <img src="images/heat.svg" class="icon-svg">
+                    WHAT WE OFFER
+                </span>
+                <h2>Our Specialized Services</h2>
+                <p>We provide comprehensive support tailored to real estate professionals at every level of their business.</p>
+            </div>
+
+            <div class="services-container">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <h3 class="service-name">Transaction Coordination</h3>
+                    <p class="service-description">From contract to close, we handle all the details to ensure smooth, on-time transactions every time.</p>
+                    <ul class="service-features">
+                        <li>Contract to close management</li>
+                        <li>Deadline tracking</li>
+                        <li>Document collection</li>
+                        <li>Closing coordination</li>
+                    </ul>
+                    <button class="service-button">Learn More</button>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3 class="service-name">Marketing Support</h3>
+                    <p class="service-description">Professional marketing materials and campaigns to help you stand out in a competitive market.</p>
+                    <ul class="service-features">
+                        <li>Listing presentations</li>
+                        <li>Social media management</li>
+                        <li>Email campaigns</li>
+                        <li>Print & digital collateral</li>
+                    </ul>
+                    <button class="service-button">Learn More</button>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3 class="service-name">Administrative Support</h3>
+                    <p class="service-description">Free up your time by delegating routine tasks to our experienced support team.</p>
+                    <ul class="service-features">
+                        <li>Calendar management</li>
+                        <li>Email & phone screening</li>
+                        <li>Data entry</li>
+                        <li>CRM maintenance</li>
+                    </ul>
+                    <button class="service-button">Learn More</button>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="service-name">Lead Management</h3>
+                    <p class="service-description">Turn more leads into clients with our systematic follow-up and nurturing process.</p>
+                    <ul class="service-features">
+                        <li>Lead intake & qualification</li>
+                        <li>Follow-up sequences</li>
+                        <li>CRM setup & optimization</li>
+                        <li>Reporting & analytics</li>
+                    </ul>
+                    <button class="service-button">Learn More</button>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3 class="service-name">Listing Management</h3>
+                    <p class="service-description">Comprehensive support for all aspects of your property listings.</p>
+                    <ul class="service-features">
+                        <li>MLS entry & updates</li>
+                        <li>Showing coordination</li>
+                        <li>Feedback collection</li>
+                        <li>Open house support</li>
+                    </ul>
+                    <button class="service-button">Learn More</button>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="service-name">Business Development</h3>
+                    <p class="service-description">Strategies and support to help you grow your real estate business.</p>
+                    <ul class="service-features">
+                        <li>Business planning</li>
+                        <li>Market analysis</li>
+                        <li>Farm area strategies</li>
+                        <li>Referral programs</li>
+                    </ul>
+                    <button class="service-button">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="process-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="secondary-section-title">
+                    <img src="images/heat.svg" class="icon-svg">
+                    OUR PROCESS
+                </span>
+                <h2>How It Works</h2>
+                <p>Simple steps to get your real estate business the support it needs to thrive.</p>
+            </div>
+
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Consultation</h3>
+                    <p class="step-description">We'll discuss your business needs and identify areas where we can provide the most value.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Custom Plan</h3>
+                    <p class="step-description">We'll create a customized service plan tailored to your specific requirements.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Onboarding</h3>
+                    <p class="step-description">We'll integrate with your systems and processes for seamless collaboration.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Support</h3>
+                    <p class="step-description">Our team begins providing the agreed services with regular performance reviews.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="secondary-section-title">
+                    <img src="images/heat.svg" class="icon-svg">
+                    TESTIMONIALS
+                </span>
+                <h2>What Our Clients Say</h2>
+                <p>Hear from real estate professionals who have transformed their businesses with our support.</p>
+            </div>
+
+            <div class="testimonials-container">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>AmigoNex has been a game-changer for my business. Their transaction coordination service saved me over 20 hours per month, allowing me to focus on client relationships.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="public/client1.jpg" alt="Sarah Johnson" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>Top Producer, Keller Williams</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>The marketing support team created stunning materials that helped me win 3 new listings in my first month working with them. Worth every penny!</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="public/client2.jpg" alt="Michael Chen" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Michael Chen</h4>
+                            <p>Broker Associate, Coldwell Banker</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>As a new agent, I couldn't afford a full-time assistant. AmigoNex provided exactly the right level of support to help me get my business off the ground.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="public/client3.jpg" alt="Jessica Williams" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Jessica Williams</h4>
+                            <p>New Agent, RE/MAX</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="services-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Transform Your Business?</h2>
+                <p>Schedule a free consultation to discover how our services can help you save time and close more deals.</p>
+                <button class="hero-button">Get Started Today</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <img src="./public/copt.png" alt="AmigoNex logo" width="180">
+            <div class="footer-content">
+                <div class="footer-contact">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>contact@amigonex.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <p>(555) 123-4567</p>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <p class="copyright">&copy; 2025 AmigoNex - Your Real Estate Ally. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple animation for process steps on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const processSteps = document.querySelectorAll('.process-step');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            processSteps.forEach(step => {
+                step.style.opacity = 0;
+                step.style.transform = 'translateY(20px)';
+                step.style.transition = 'all 0.5s ease';
+                observer.observe(step);
+            });
+            
+            // Add delay to each step
+            processSteps.forEach((step, index) => {
+                step.style.transitionDelay = `${index * 0.1}s`;
+            });
+        });
+    </script>
+</body>
 </html>
