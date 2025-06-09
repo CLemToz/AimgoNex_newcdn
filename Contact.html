@@ -80,16 +80,48 @@
             display: inline-block;
             text-decoration: none;
         }
+
+        .fas{
+            margin-right: 5px;
+        }
+        
+        .pri-btn{
+            background: white;
+            color: #339550;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(64, 175, 62, 0.3);
+            display: inline-block;
+            text-decoration: none;
+            border-radius: 150px; 
+        }
+        
+        .pri-btn:hover{
+            color: white;
+            background-color: #339550;
+            border: 2px solid white;
+        }
         
         button:hover, .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(64, 175, 62, 0.4);
+            box-shadow: 0 6px 20px rgba(64, 175, 62, 0.1);
         }
         
         .btn-outline {
-            background: transparent;
-            border: 2px solid var(--primary-color);
-            color: var(--primary-color);
+            background: #339550;
+            border: 2px solid white;
+            color: white;
+        }
+        
+        .btn-outline:hover{
+            background-color: white;
+            color: #339550;
+            transform: translateY(0px);
         }
         
         /* Header Styles */
@@ -143,7 +175,7 @@
         
         /* Contact Hero Section */
         .contact-hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('public/contact-hero-bg.jpg') no-repeat center center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('./images/hero\ section/contact\ us.jpg') no-repeat center center/cover;
             color: white;
             padding: 180px 0 100px;
             text-align: center;
@@ -718,7 +750,7 @@
                 <h2>Ready to Get Started?</h2>
                 <p>Join hundreds of real estate professionals who trust AmigoNex for their business support needs.</p>
                 <div style="display: flex; gap: 15px; justify-content: center;">
-                    <a href="pricing.html" class="btn">View Pricing</a>
+                    <a href="pricing.html" class="pri-btn">View Pricing</a>
                     <a href="tel:+15551234567" class="btn btn-outline">Call Now</a>
                 </div>
             </div>
